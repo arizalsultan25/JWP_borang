@@ -3,7 +3,7 @@
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <img src="atlantis-dashboard/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                    <img src="{{ asset('atlantis-dashboard/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <ul class="nav nav-primary">
-                <li class="nav-item active">
+                <li class="nav-item {{ $active == 'dashboard' ? 'active' : null }}">
                     <a href="#dashboard" aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
@@ -35,71 +35,22 @@
                     </span>
                     <h4 class="text-section">Halaman</h4>
                 </li>
-                {{-- <li class="nav-item">
-                    <a data-toggle="collapse" href="#base">
-                        <i class="fas fa-layer-group"></i>
-                        <p>Base</p>
-                        <span class="caret"></span>
+                <li class="nav-item {{ $active == 'ruangan' ? 'active' : null }}">
+                    <a href="{{ route('tu-ruangan') }}">
+                        <i class="fas fa-chalkboard-teacher    "></i>
+                        <p>Ruangan</p>
                     </a>
-                    <div class="collapse" id="base">
-                        <ul class="nav nav-collapse">
-                            <li>
-                                <a href="components/avatars.html">
-                                    <span class="sub-item">Avatars</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/buttons.html">
-                                    <span class="sub-item">Buttons</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/gridsystem.html">
-                                    <span class="sub-item">Grid System</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/panels.html">
-                                    <span class="sub-item">Panels</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/notifications.html">
-                                    <span class="sub-item">Notifications</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/sweetalert.html">
-                                    <span class="sub-item">Sweet Alert</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/font-awesome-icons.html">
-                                    <span class="sub-item">Font Awesome Icons</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/simple-line-icons.html">
-                                    <span class="sub-item">Simple Line Icons</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/flaticons.html">
-                                    <span class="sub-item">Flaticons</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/typography.html">
-                                    <span class="sub-item">Typography</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> --}}
+                </li>
+                <li class="nav-item {{ $active == 'borang' ? 'active' : null }}">
+                    <a href="{{ route('tu-borang') }}">
+                        <i class="far fa-calendar-alt    "></i>
+                        <p>Borang Ruangan</p>
+                    </a>
+                </li>
                 <li class="nav-item">
-                    <a href="#charts">
-                        <i class="far fa-chart-bar"></i>
-                        <p>Charts</p>
+                    <a href="{{ route('logout') }}">
+                        <i class="fa fa-sign-out-alt" aria-hidden="true"></i>
+                        <p>Log out</p>
                     </a>
                 </li>
             </ul>

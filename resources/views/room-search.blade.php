@@ -8,11 +8,11 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Daftar Ruangan</h2>
+          <h2>Cari Ruangan</h2>
           <ol>
             <li><a href="{{ route('home') }}">Home</a></li>
-            {{-- <li><a href="portfolio.html">Portfolio</a></li> --}}
-            <li>Ruangan</li>
+            <li><a href="{{ route('ruangan.index') }}">Ruangan</a></li>
+            <li>Cari Ruangan</li>
           </ol>
         </div>
 
@@ -24,37 +24,27 @@
         <div class="container">
 
           <div class="section-title" data-aos="fade-up">
-            {{-- <h2>Ruangan</h2> --}}
             <p>Ruangan</p>
           </div>
 
-          <div id="footer">
+          <div id="footer" class="mb-4">
             <div class="footer-newsletter" data-aos="fade-up">
                 <div class="container">
                   <div class="row justify-content-center">
                     <div class="col-lg-6">
-                      <p>Cari ruangan</p>
-                      <form action="{{ route('search') }}" method="GET">
-                          {{-- @csrf --}}
-                        <input type="text" placeholder="Cari ruangan..." style="border: 0; padding: 4px 4px; width: calc(100% - 100px);" name="s"><input type="submit" value="Cari">
-                      </form>
+                        <h2>Hasil pencarian dengan kata kunci '<span style="color: #EB5D1E">{{ $keyword }}</span>'</h2>
+                        <form action="{{ route('search') }}" method="GET">
+                            {{-- @csrf --}}
+                          <input type="text" placeholder="Cari ruangan..." style="border: 0; padding: 4px 4px; width: calc(100% - 100px);" name="s"><input type="submit" value="Cari">
+                        </form>
                     </div>
                   </div>
                 </div>
               </div>
           </div>
 
-          <div class="row" data-aos="fade-up" data-aos-delay="100">
-            <div class="col-lg-12">
-              <ul id="portfolio-flters">
-                <li data-filter="*" class="filter-active">Semua</li>
-                <li data-filter=".filter-kelas">Ruang Kelas</li>
-                <li data-filter=".filter-lab">Lab</li>
-              </ul>
-            </div>
-          </div>
 
-          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
 
             @foreach ($rooms as $room)
             <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $room->jenis }}">
@@ -68,10 +58,8 @@
                     <h4>{{ $room->kode }}</h4>
                     {{-- <p>{{ $room->nama_ruangan }}</p> --}}
                     @if ($room->status == 'available')
-
                     <span class="badge badge-pill badge-success mb-4">Available</span>
                     @else
-
                     <span class="text-white mb-4">Telah diborang oleh <br>
                     <span class="badge badge-pill badge-info">Nama pemborang</span>
                     <br>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +21,19 @@ class TUController extends Controller
     public function index()
     {
         return view('tata-usaha.dashboard');
-        // dd(Auth::user()->role);
+    }
+
+    public function ruangan()
+    {
+        return view('tata-usaha.ruangan', [
+            'data_ruangan' => Room::orderBy('kode', 'asc')->get()
+        ]);
+    }
+
+    public function borang()
+    {
+        return view('tata-usaha.borang',[
+            'data_borang' => Booking::get()
+        ]);
     }
 }

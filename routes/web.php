@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DosenController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TUController;
 
 /*
@@ -18,29 +20,40 @@ use App\Http\Controllers\TUController;
 
 //View
 Route::view('/', 'home')->name('home');
-Route::view('/room-list', 'room-list')->name('room-list');
 
-
-Route::get('/ruangan', function(){
-    return view('room-detail');
-})->name('room-detail');
 
 // Controller
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
+Route::get('search', [RoomController::class, 'search'])->name('search');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
+
+
+// Prefix
 Route::prefix('dosen')->group(function () {
     Route::get('/', [DosenController::class, 'index'])->name('dosen-index');
+    Route::get('/borang', [DosenController::class, 'borang'])->name('dosen-borang');
+    Route::post('/borang', [DosenController::class, 'konfirmasi'])->name('dosen-borang');
+
+
 });
 
 Route::prefix('tata-usaha')->group(function () {
     Route::get('/', [TUController::class, 'index'])->name('tu-index');
+    Route::get('/ruangan', [TUController::class, 'ruangan'])->name('tu-ruangan');
+    Route::get('/borang', [TUController::class, 'borang'])->name('tu-borang');
+
 });
 
 // middleware auth
 Route::middleware(['auth'])->group(function () {
-    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('logout', [LoginController::class, 'logout'])->name('sign-out');
 });
+
+// Resource
+Route::resource('ruangan', RoomController::class);
+Route::resource('borang', BookingController::class);
 
 
 

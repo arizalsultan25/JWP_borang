@@ -1,4 +1,6 @@
-@extends('tata-usaha.template.app')
+@extends('tata-usaha.template.app', [
+    'active' => 'dashboard'
+])
 
 @section('content')
 <div class="main-panel">

@@ -62,7 +62,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('room-list') }}" class="nav-link">
+            <a href="{{ route('ruangan.index') }}" class="nav-link">
               <span class="nav-link-inner--text">Ruangan</span>
             </a>
           </li>

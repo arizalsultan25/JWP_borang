@@ -3,7 +3,7 @@
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <img src="atlantis-dashboard/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                    <img src="{{ asset('atlantis-dashboard/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <ul class="nav nav-primary">
-                <li class="nav-item active">
+                <li class="nav-item {{ $active == 'dashboard' ? 'active' : null }}">
                     <a href="#dashboard" aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
@@ -96,10 +96,16 @@
                         </ul>
                     </div>
                 </li> --}}
+                <li class="nav-item {{ $active == 'borang' ? 'active' : null }}">
+                    <a href="{{ route('dosen-borang') }}">
+                        <i class="far fa-calendar-alt    "></i>
+                        <p>Borang Ruangan</p>
+                    </a>
+                </li>
                 <li class="nav-item">
-                    <a href="#charts">
-                        <i class="far fa-chart-bar"></i>
-                        <p>Charts</p>
+                    <a href="{{ route('logout') }}">
+                        <i class="fa fa-sign-out-alt" aria-hidden="true"></i>
+                        <p>Log out</p>
                     </a>
                 </li>
             </ul>

@@ -23,7 +23,17 @@ class UserSeeder extends Seeder
             'email' => 'tu@polibatam.ac.id',
             'email_verified_at' => now(),
             'role' => 'tu',
-            'password' => bcrypt('password'), // password
+            'password' => bcrypt('secret'), // password
+            'remember_token' => Str::random(10),
+        ]);
+
+        // Akun Dosen
+        DB::table('users')->insert([
+            'name' => 'Ardy Armando',
+            'email' => 'ardybelian@gmail.com',
+            'email_verified_at' => now(),
+            'role' => 'dosen',
+            'password' => bcrypt('secret'), // password
             'remember_token' => Str::random(10),
         ]);
 

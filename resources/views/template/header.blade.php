@@ -11,10 +11,16 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li><a href="{{ route('home') }}">Home</a></li>
-          <li><a href="{{ route('room-list') }}">Ruangan</a></li>
+          <li><a href="{{ route('ruangan.index') }}">Ruangan</a></li>
 
           @auth
-              <li><a href="{{ route('room-list') }}">Log out</a></li>
+              <li>
+                {{-- <form action="{{ route('sign-out') }}" method="post">
+                    @csrf
+                  <button type="submit" class="btn btn-link">Log out</button>
+                </form> --}}
+                <a href="{{ route('sign-out') }}">Logout</a>
+              </li>
               @if (Auth::user()->role == 'tu')
                   <li class="get-started"><a href="{{ route('tu-index') }}">Dashboard</a></li>
               @else
