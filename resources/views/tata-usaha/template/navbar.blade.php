@@ -2,7 +2,7 @@
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="purple">
 
-        <a href="{{ route('tu-index') }}" class="logo text-white">
+        <a href="{{ route('home') }}" class="logo text-white">
             <img src="{{ asset('argon-login/img/brand/favicon.png') }}" alt="navbar brand" class="navbar-brand">
             BorangKuy
         </a>

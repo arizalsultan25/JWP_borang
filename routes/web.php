@@ -42,7 +42,10 @@ Route::prefix('dosen')->group(function () {
 Route::prefix('tata-usaha')->group(function () {
     Route::get('/', [TUController::class, 'index'])->name('tu-index');
     Route::get('/ruangan', [TUController::class, 'ruangan'])->name('tu-ruangan');
+    Route::get('/ruangan/create', [RoomController::class, 'create'])->name('tu-create-ruangan');
+    Route::get('/ruangan/{kode}/edit', [RoomController::class, 'edit'])->name('tu-edit-ruangan');
     Route::get('/borang', [TUController::class, 'borang'])->name('tu-borang');
+    // Route::post('/konfirmasi/{id}', [BookingController::class, 'update'])->name('tu-konfirmasi');
 
 });
 

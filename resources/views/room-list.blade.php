@@ -70,13 +70,18 @@
                     @if ($room->status == 'available')
 
                     <span class="badge badge-pill badge-success mb-4">Available</span>
-                    @else
+                    @elseif($room->status == 'booked')
+                    <?php
+                        $borang = DB::table('bookings')->where('kode_ruangan', '=', $room->kode)->where('status_peminjaman', '=', 'booked')->first();
+                    ?>
 
-                    <span class="text-white mb-4">Telah diborang oleh <br>
-                    <span class="badge badge-pill badge-info">Nama pemborang</span>
-                    <br>
-                    mulai tgl hingga tgl
-                    </span>
+                    <span class="text-white mb-4" style="margin-top: 10px">Telah diborang mulai </span><br>
+                    <p class="text-white">
+                    <span class="badge badge-pill badge-warning">{{ date('d M Y (H:i)', strtotime($borang->waktu_mulai)) }}</span> - <span class="badge badge-pill badge-warning">{{ date('d M Y (H:i)', strtotime($borang->waktu_selesai)) }}</span>
+                    </p>
+                    @else
+                    <span class="badge badge-pill badge-danger mb-4">Sedang digunakan</span>
+
                     @endif
                   </div>
                 </div>

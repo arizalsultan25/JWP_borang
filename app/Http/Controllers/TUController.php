@@ -18,11 +18,13 @@ class TUController extends Controller
         }
     }
 
+    // halaman dashboard
     public function index()
     {
         return view('tata-usaha.dashboard');
     }
 
+    // halaman peminjaman
     public function ruangan()
     {
         return view('tata-usaha.ruangan', [
@@ -36,4 +38,5 @@ class TUController extends Controller
             'data_borang' => Booking::get()
         ]);
     }
+
 }

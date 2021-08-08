@@ -60,13 +60,30 @@
                     @if ($room->status == 'available')
                         <br>
                         <button class="btn btn-success btn-block" style="background-color: #EB5D1E; border: solid 1px #EB5D1E" data-toggle="modal" data-target="#modalForm"><i class='bx bx-calendar-plus'></i> Borang Ruangan</button>
-                    @else
+                    @elseif($room->status == 'booked')
+                    <?php
+                    $borang = DB::table('bookings')->where('kode_ruangan', '=', $room->kode)->where('status_peminjaman', '=', 'booked')->first();
+                    ?>
+
                         <div class="alert alert-info" role="alert">
                             <strong><h4><i class="fa fa-info-circle" aria-hidden="true"></i> info</h4></strong>
                             <p>
                                 Ruangan telah diborang oleh : <br>
-                                Nama <br>
-                                dari tgl hingga tgl
+                                <strong>{{ $borang->nama_mahasiswa }}</strong> <br>
+                                dari <strong>{{ date('d M Y (H:i)', strtotime($borang->waktu_mulai)) }}</strong> hingga <strong>{{ date('d M Y (H:i)', strtotime($borang->waktu_selesai)) }}</strong>
+                            </p>
+                        </div>
+                    @else
+                    <?php
+                    $borang = DB::table('bookings')->where('kode_ruangan', '=', $room->kode)->where('status_peminjaman', '=', 'sedang digunakan')->first();
+                    ?>
+
+                        <div class="alert alert-warning" role="alert">
+                            <strong><h4><i class="fa fa-info-circle" aria-hidden="true"></i> info</h4></strong>
+                            <p>
+                                Ruangan sedang digunakan untuk : <br>
+                                <strong>{{ $borang->nama_kegiatan }}</strong> <br>
+                                dari <strong>{{ date('d M Y (H:i)', strtotime($borang->waktu_mulai)) }}</strong> hingga <strong>{{ date('d M Y (H:i)', strtotime($borang->waktu_selesai)) }}</strong>
                             </p>
                         </div>
                     @endif

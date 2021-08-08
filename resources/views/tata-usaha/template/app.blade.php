@@ -25,8 +25,11 @@
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link rel="stylesheet" href="{{ asset('atlantis-dashboard/css/demo.css') }}">
 
+        {{-- SummerNote --}}
+          <link rel="stylesheet" href="{{ asset('argon-login/vendor/summernote/summernote-bs4.min.css') }}">
+
           {{-- Sweet alert --}}
-      <link rel="stylesheet" href="{{ asset('argon-login/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
+          <link rel="stylesheet" href="{{ asset('argon-login/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
     </head>
 <body data-background-color="bg3">
 	<div class="wrapper">
@@ -80,6 +83,10 @@
 <!-- Atlantis JS -->
 <script src="{{ asset('atlantis-dashboard/js/atlantis.min.js') }}"></script>
 
+<!-- Summernote -->
+<script src="{{ asset('argon-login/vendor/summernote/summernote-bs4.min.js') }}"></script>
+
+{{-- Dashboard --}}
 <script>
     Circles.create({
         id:'circles-1',
@@ -175,19 +182,29 @@
     });
 </script>
 
+{{-- Datatable --}}
 <script>
     $(document).ready(function() {
         $('#basic-datatables').DataTable({
             responsive: 'true'
         });
+
     })
 </script>
 
+{{-- Summernote --}}
+<script>
+    $(function () {
+        $('.summernote').summernote()
+    })
+</script>
+
+{{-- Sweetalert2 flash data --}}
 @if (session('success'))
 <script>
 Swal.fire(
     'Success!',
-    'Peminjaman telah berhasil dikonfirmasi',
+    "{{ session('success') }}",
     'success'
 )
 </script>

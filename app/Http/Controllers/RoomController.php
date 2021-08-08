@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoomRequest;
 use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        return view('tata-usaha.create-room');
     }
 
     /**
@@ -46,9 +47,24 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoomRequest $request)
     {
-        //
+        $nama_gambar = 'Ruangan-' . $request->kode . '.' . $request->gambar->extension();
+
+        // Upload
+        $upload = $request->gambar->move(public_path('gambar'), $nama_gambar);
+
+        Room::insert([
+            'kode' => $request->kode,
+            'nama_ruangan' => $request->nama_ruangan,
+            'jenis' => $request->jenis,
+            'daya_tampung' => $request->daya_tampung,
+            'fasilitas' => $request->fasilitas,
+            'gambar' => $nama_gambar,
+            'keterangan' => $request->keterangan,
+        ]);
+        return redirect(route('tu-ruangan'))->with('success', 'Data Ruangan telah berhasil ditambahkan');
+
     }
 
     /**
@@ -73,9 +89,12 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function edit(Room $room)
+    public function edit($kode)
     {
-        //
+        $room = Room::whereKode($kode)->first();
+        return view('tata-usaha.edit-room', [
+            'ruangan' => $room,
+        ]);
     }
 
     /**
@@ -85,9 +104,50 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update($kode, Request $request)
     {
-        //
+        //Validation
+        $request->validate([
+            'kode' => ['required'],
+            'nama_ruangan' => ['required'],
+            'jenis' => ['required'],
+            'daya_tampung' => ['required', 'min:1'],
+            'fasilitas' => ['required'],
+            'gambar' => ['image','mimes:png,jpg,jpeg,gif','max:5096'],
+            'keterangan' => ['required'],
+        ]);
+
+        // Ruangan
+        $ruangan = Room::whereKode($request->kode)->first();
+
+        if($request->gambar !== null){
+            $nama_gambar = 'Ruangan-' . $request->kode . '.' . $request->gambar->extension();
+
+            // Upload
+            $upload = $request->gambar->move(public_path('gambar'), $nama_gambar);
+
+            $ruangan->update([
+                'kode' => $request->kode,
+                'nama_ruangan' => $request->nama_ruangan,
+                'jenis' => $request->jenis,
+                'daya_tampung' => $request->daya_tampung,
+                'fasilitas' => $request->fasilitas,
+                'gambar' => $nama_gambar,
+                'keterangan' => $request->keterangan,
+            ]);
+        }else{
+            $ruangan->update([
+                'kode' => $request->kode,
+                'nama_ruangan' => $request->nama_ruangan,
+                'jenis' => $request->jenis,
+                'daya_tampung' => $request->daya_tampung,
+                'fasilitas' => $request->fasilitas,
+                'keterangan' => $request->keterangan,
+            ]);
+        }
+
+        return redirect(route('tu-ruangan'))->with('success', 'Data Ruangan telah berhasil diperbarui');
+
     }
 
     /**
@@ -96,8 +156,11 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Room $room)
+    public function destroy($kode)
     {
-        //
+        $ruang = Room::where('kode','=',$kode)->first();
+        $ruang->delete();
+
+        return redirect(route('tu-ruangan'))->with('success', 'Data Ruangan telah berhasil dihapus');
     }
 }
