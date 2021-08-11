@@ -192,24 +192,33 @@
         <ul class="faq-list">
 
           <li data-aos="fade-up" data-aos-delay="100">
-            <a data-toggle="collapse" class="" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="icofont-simple-up"></i></a>
+            <a data-toggle="collapse" class="" href="#faq1">Kenapa borang saya ditolak? <i class="icofont-simple-up"></i></a>
             <div id="faq1" class="collapse show" data-parent=".faq-list">
               <p>
-                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                Persetujuan borang ruangan merupakan Hak Tata Usaha IF selaku pengelola seluruh ruangan di Jurusan Informatika. Apabila borang ditolak, maka Tata Usaha akan menghubungi Anda dan menjelaskan alasan borang Anda ditolak.
               </p>
+              <p>
+                  Borang anda ditolak apabila :
+              </p>
+              <ul>
+                  <li>Sudah terlebih dahulu diborang oleh orang lain.</li>
+                  <li>Prioritas penggunaan ruangan lebih rendah.</li>
+                  <li>Ruangan sedang dalam masa perbaikan atau maintanance.</li>
+                  <li>Pemborang Ruangan masuk daftar Blacklist peminjam ruangan IF.</li>
+              </ul>
             </div>
           </li>
 
           <li data-aos="fade-up" data-aos-delay="200">
-            <a data-toggle="collapse" href="#faq2" class="collapsed">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="icofont-simple-up"></i></a>
+            <a data-toggle="collapse" href="#faq2" class="collapsed">Bagaimana cara mengecek status peminjaman?<i class="icofont-simple-up"></i></a>
             <div id="faq2" class="collapse" data-parent=".faq-list">
               <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                Anda dapat mengecek status ruangan dengan melihat ruangan pada daftar List Ruangan, kemudian menekan menu Detail Ruangan.
               </p>
             </div>
           </li>
 
-          <li data-aos="fade-up" data-aos-delay="300">
+          {{-- <li data-aos="fade-up" data-aos-delay="300">
             <a data-toggle="collapse" href="#faq3" class="collapsed">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="icofont-simple-up"></i></a>
             <div id="faq3" class="collapse" data-parent=".faq-list">
               <p>
@@ -243,7 +252,7 @@
                 Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
               </p>
             </div>
-          </li>
+          </li> --}}
 
         </ul>
 
