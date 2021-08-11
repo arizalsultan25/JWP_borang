@@ -33,6 +33,12 @@
   {{-- Font awesome icon --}}
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <style>
+        .link-ruangan:hover{
+            color : #EE723C
+        }
+    </style>
+
   <!-- =======================================================
   * Template Name: Ninestars - v2.3.1
   * Template URL: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/

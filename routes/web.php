@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TUController;
+use App\Models\Room;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,11 @@ use App\Http\Controllers\TUController;
 */
 
 //View
-Route::view('/', 'home')->name('home');
+Route::get('/', function(){
+    return view('home', [
+        'rooms' => Room::orderBy('kode', 'asc')->offset(0)->limit(6)->get()
+    ]);
+})->name('home');
 
 
 // Controller

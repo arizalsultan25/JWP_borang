@@ -37,6 +37,15 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
+        DB::table('users')->insert([
+            'name' => 'Deva Rahmat Ladio',
+            'email' => 'dev.lad@gmail.com',
+            'email_verified_at' => now(),
+            'role' => 'dosen',
+            'password' => bcrypt('secret'), // password
+            'remember_token' => Str::random(10),
+        ]);
+
         // Factory 8 akun dosen
         User::factory(8)
             ->create();
